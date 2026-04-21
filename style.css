@@ -1,0 +1,358 @@
+/* CSS variables with fallbacks */
+:root {
+  --bg-main: #f7f8fc;
+  --surface: #ffffff;
+  --text-main: rgb(52, 27, 28);
+  --accent: hsl(0, 78%, 46%);
+  --accent-soft: hsla(214, 78%, 46%, 0.12);
+  --warm: red;
+  --shadow-color: rgba(42, 15, 15, 0.12);
+  --card-radius: 18px;
+  --space-lg: 1.5rem;
+  --space-md: 1rem;
+  --content-max: 72rem;
+  --fancy-wide: color(rec2020 0.1 0.05 0.05);
+}
+
+/* Universal selector */
+* {
+  box-sizing: border-box;
+}
+
+/* Element selector */
+body {
+  margin: 0;
+  position: relative;
+  font-family: var(--body-font, "Inter"), Arial, sans-serif;
+  color: var(--text-main, #222);
+  background-color: var(--bg-main, #f4f4f4);
+  background-image: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--fancy-wide) 65%, white 35%),
+    #f7f8fc
+  );
+  line-height: 1.6;
+}
+
+/* Selector list */
+h1,
+h2,
+h3 {
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--accent, #1d4ed8);
+  text-align: left;
+  margin-top: 0.4em;
+}
+
+/* ID selector */
+#top {
+  scroll-behavior: smooth;
+}
+
+/* Combining two selectors */
+section.card {
+  background-color: var(--surface, white);
+  width: 100%;
+  min-width: 16rem;
+  max-width: 100%;
+  border: 2px solid color-mix(in srgb, var(--accent, #2563eb) 25%, white 75%);
+  border-radius: var(--card-radius);
+  box-shadow: 0 10px 24px var(--shadow-color);
+  padding: 1rem 1.25rem 1rem 1.25rem; /* shorthand padding */
+}
+
+/* Main layout uses GRID with 3+ children and 3+ grid properties */
+.page-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(16rem, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+  width: min(92vw, var(--content-max));
+  margin: auto; /* auto margins */
+  padding-top: 1.5rem;   /* longhand padding */
+  padding-right: 1rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1rem;
+}
+
+/* Relative positioned header */
+.site-header {
+  position: relative;
+  top: 0;
+  z-index: 10;
+  background-color: color-mix(in srgb, white 82%, var(--accent-soft) 18%);
+  width: 100%;
+  border-style: solid; /* longhand border */
+  border-color: #d8e1f0;
+  border-width: 0 0 2px 0;
+  border-radius: 0;
+  padding: 1rem 1.25rem 1rem 1.25rem;
+  margin-top: 0;   /* longhand margin */
+  margin-right: 0;
+  margin-bottom: 0.75rem;
+  margin-left: 0;
+}
+
+/* Absolute positioning example */
+.badge {
+  position: absolute;
+  top: 12px;   /* px absolute unit */
+  right: 18px;
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background-color: var(--warm, red);
+  color: #271111;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Flexbox with more than two children and 3+ flex properties */
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0 0 0;
+}
+
+/* Child combinator */
+nav > ul {
+  margin-bottom: 0.25rem;
+}
+
+/* Descendant combinator */
+header nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--accent, #eb2525);
+  background-color: rgba(235, 37, 37, 0.08);
+  padding: 0.55em 0.85em;
+  border: 1px solid rgba(235, 37, 37, 0.22);
+  border-radius: 999px;
+}
+
+/* Pseudo-class */
+header nav a:hover {
+  background-color: rgba(235, 37, 37, 0.282);
+  text-decoration: underline;
+}
+
+header nav a:active,
+button:active {
+  transform: translateY(1px);
+}
+
+/* Attribute selector */
+a[href^="https"] {
+  font-weight: 700;
+}
+
+/* Hero image uses shorthand margin */
+.hero-image {
+  display: block;
+  width: 100%;
+  max-width: 28rem;
+  min-width: 12rem;
+  height: auto;
+  margin: 0 auto 0.75rem auto;
+  border: 4px solid #cbd5e1;
+  border-radius: 20px;
+}
+
+/* Element selector + text styles */
+p {
+  color: rgb(76, 39, 39);
+  text-align: left;
+}
+
+/* Adjacent sibling combinator */
+h2 + p {
+  margin-top: 0.3rem;
+}
+
+/* General sibling combinator */
+h2 ~ p {
+  max-width: 65ch;
+}
+
+/* Inline display example */
+.inline-note {
+  display: inline;
+  color: #a22121;
+  text-decoration: underline dotted;
+}
+
+/* Hidden element / display none example */
+[hidden] {
+  display: none;
+}
+
+/* Another display value */
+video,
+audio {
+  display: block;
+  width: 100%;
+}
+
+/* Grid example with 3 children and 3+ grid properties */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(8rem, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Form styles */
+.feedback-section {
+  width: min(92vw, 72rem);
+  margin: 1rem auto 2rem auto;
+  background-color: #fff;
+}
+
+/* Attribute selectors */
+input[type="text"],
+input[type="date"],
+textarea,
+select,
+input[list] {
+  width: 100%;
+  max-width: 28rem;
+  padding: 0.6rem;
+  margin: 0.35rem 0 0.9rem 0;
+  border: 1px solid #d1b6b6;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+/* Longhand margin example */
+fieldset {
+  margin-top: 0.6rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding: 1rem 1rem 1rem 1rem;
+  border-style: solid;
+  border-color: #cbd5e1;
+  border-width: 2px;
+  border-radius: 12px;
+}
+
+/* Label display example */
+label {
+  display: inline;
+  font-weight: 600;
+}
+
+/* Button styling */
+button {
+  display: inline-block;
+  background-color: var(--accent, #eb2525);
+  color: white;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Class selector */
+.info-box {
+  background-color: hsla(150, 45%, 85%, 0.55);
+  text-align: center;
+}
+
+/* :has() selector */
+section:has(details) {
+  background-color: color-mix(in srgb, #ffffff 85%, #dbeafe 15%);
+}
+
+/* New nested selectors */
+.feedback-section {
+  & form {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  & legend {
+    color: hsl(0, 60%, 32%);
+    padding: 0 0.5rem;
+  }
+
+  & textarea {
+    min-height: 8rem;
+    resize: vertical;
+  }
+}
+
+/* Another nested selector example */
+.site-header {
+  & .video-link {
+    color: color(display-p3 0.13 0.35 0.85);
+  }
+
+  & .video-link:hover {
+    color: #2a0f0f;
+  }
+}
+
+/* Footer with absolute units (pt, mm) */
+#page-footer {
+  text-align: center;
+  padding: 10pt;
+  margin: 8mm auto 0 auto;
+  background-color: #ffffff;
+  color: white;
+}
+
+/* Small decorative hr */
+hr {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 2px;
+  border: 0;
+  background-color: #f1d9d9;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .badge {
+    position: static;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 1rem;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  header nav a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}

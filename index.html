@@ -3,19 +3,42 @@
   <head>
     <title>Can MKBHD's Tech Setup Replace Mine?</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico">
+
+    <!-- 3rd party fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Internal CSS with <style> (required checklist item) -->
+    <style>
+      #page-footer p {
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+        opacity: 0.8;
+      }
+
+      .card h2 {
+        border-top: 3px solid var(--accent, #eb2525);
+        padding-top: 0.4rem;
+      }
+    </style>
   </head>
 
-  <body>
+  <body id="top">
+    <header class="site-header">
+      <span class="badge" aria-hidden="true">Michael Awad</span>
 
-    <header>
       <h1>Can MKBHD's Tech Setup Replace Mine?</h1>
       <h2>Meeting Minutes on Video by UrAvgConsumer</h2>
-      <h3>Date: April 11, 2026</h3>
-      <a href="https://www.youtube.com/watch?v=LEO2j7cmrbg">Go To Video</a>
+      <h3 style="color: #6e1a1a9a; font-size: 1rem; margin-bottom: 0.5rem;">Date: April 21, 2026</h3>
+      <a class="video-link" href="https://www.youtube.com/watch?v=LEO2j7cmrbg" target="_blank">Go To Video</a>
 
       <nav>
-        <ul>
+        <ul class="nav-list">
           <li><a href="#attendance">Attendance</a></li>
           <li><a href="#agenda">Agenda</a></li>
           <li><a href="#unfinished">Unfinished Business</a></li>
@@ -25,11 +48,10 @@
       </nav>
     </header>
 
-    <main>
+    <main class="page-layout">
+      <img class="hero-image" src="edc.png" alt="Diagram or whiteboard" width="200">
 
-      <img src="edc.png" alt="Diagram or whiteboard" width="200">
-
-      <section id="attendance">
+      <section id="attendance" class="card">
         <h2>Attendance</h2>
         <ul>
           <li>UrAvgConsumer</li>
@@ -40,9 +62,9 @@
 
       <hr>
 
-      <section id="agenda">
+      <section id="agenda" class="card">
         <h2>Agenda</h2>
-        <ol>
+        <ol class="agenda-list">
           <li>Introcution</li>
           <li>MKBHD's EDC</li>
           <li>The Swap</li>
@@ -56,7 +78,7 @@
         </ol>
       </section>
 
-      <section id="new">
+      <section id="new" class="card">
         <h2>New Business</h2> 
         <h3>UrAvgConsumer will add to his EDC:</h3>
         <b>New items:</b> 
@@ -69,10 +91,9 @@
         <ul>
           <li>Apple M5 Pro MacBook Pro 14 inch</li>
         </ul>
-
       </section>
 
-      <section id="unfinished">
+      <section id="unfinished" class="card">
         <h2>Unfinished Business</h2>
         <p>
           UrAvgConsumer doesn't know if he wants to replace his 16in MacBook Pro with the 14in variant.
@@ -80,32 +101,35 @@
           the size of the 16 inch. He claims that he will continue using it for further testing.
           <strong>This remains an open decision.</strong>
         </p>
-
       </section>
 
-      <section>
+      <section id="misc" class="card">
         <h2>Miscellaneous</h2>
         <p>
           UrAvgConsumer claims that he spent more time on the items that he does not normally carry 
           in his EDC, and that fixation potentially made the everyday carry more uncomfortable than necessary.
           He noted that this was <em>particularly noticeable</em> during days 4 and 5.
-          <span>Additional notes pending.</span>
+          <span class="inline-note">Additional notes pending.</span>
         </p>
       </section>
 
-      <section id="media">
+      <section id="media" class="card">
         <h2>Media</h2>
 
-        <audio controls>
-          <source src="audio.mp3" type="audio/mp4">
-        </audio>
+        <div class="media-grid">
+          <audio controls>
+            <source src="audio.mp3" type="audio/mp4">
+          </audio>
 
-        <video controls width="300">
-          <source src="video.mp4" type="video/mp4">
-        </video>
+          <video controls width="300">
+            <source src="video.mp4" type="video/mp4">
+          </video>
+
+          <img src="edc.png" alt="Extra tech setup image" width="200">
+        </div>
       </section>
 
-      <section>
+      <section id="summary-section" class="card">
         <h2>Summary</h2>
         <details>
           <summary>Click to expand</summary>
@@ -120,26 +144,26 @@
         </details>
       </section>
 
-      <div>
+      <div class="card info-box">
         <p>This is inside a div container.</p>
+        <p hidden>This hidden note exists to demonstrate display: none.</p>
       </div>
-
     </main>
 
-    <section>
+    <section class="feedback-section card">
       <h2>Feedback Form</h2>
 
       <form>
         <fieldset>
           <legend>Basic Info</legend>
 
-          <label>Name:</label>
-          <input type="text">
+          <label for="name">Name:</label>
+          <input id="name" type="text" placeholder="Enter your name">
 
           <br>
 
-          <label>Date:</label>
-          <input type="date">
+          <label for="date">Date:</label>
+          <input id="date" type="date">
 
           <br>
 
@@ -155,13 +179,13 @@
 
           <br>
 
-          <label>Comments:</label>
-          <textarea></textarea>
+          <label for="comments">Comments:</label>
+          <textarea id="comments"></textarea>
 
           <br>
 
-          <label>Favorite Tool:</label>
-          <input list="tools">
+          <label for="tool-choice">Favorite Tool:</label>
+          <input id="tool-choice" list="tools">
           <datalist id="tools">
             <option value="Zoom">
             <option value="Slack">
@@ -169,8 +193,8 @@
 
           <br>
 
-          <label>Role:</label>
-          <select>
+          <label for="role">Role:</label>
+          <select id="role">
             <option>Developer</option>
             <option>Designer</option>
           </select>
@@ -178,14 +202,12 @@
           <br>
 
           <button type="submit">Submit</button>
-
         </fieldset>
       </form>
     </section>
 
-    <footer>
+    <footer id="page-footer">
       <p>EDC: "EveryDay Carry"</p>
     </footer>
-
   </body>
 </html>
